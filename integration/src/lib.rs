@@ -7,6 +7,7 @@ mod tests {
         assert_eq!(2 + 2, 4);
     }
 
+    #[test]
     fn calling() {
         super::pythonCaller::test();
     }
