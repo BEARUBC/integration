@@ -12,5 +12,7 @@ modified_data = json.loads(data)
 # send modified data to stdout
 print(modified_data)
 f = open("test2Output.txt", "w")
-f.write(modified_data)
+f.write("before\n")
+f.write(modified_data["array"])
+f.write("after\n")
 f.close()

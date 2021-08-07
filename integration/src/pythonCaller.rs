@@ -33,7 +33,7 @@ pub fn passArray(list:  & Vec<u64>) -> bool
     let jsonData = json!({
         "array": list
     });
-    println!("{:?}",demo(list));
+    println!("{:?}", list);
     let output = Command::new("python3")
     .arg("src/test2.py")
     .arg(jsonData.to_string())
