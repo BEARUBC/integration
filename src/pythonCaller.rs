@@ -5,6 +5,7 @@ use std::str::from_utf8;
 use serde_json;
 use serde_json::json;
 use std::convert::TryInto;
+use std::io::{self, Write};
 
 fn demo<T, const N: usize>(v: Vec<T>) -> [T; N] {
     v.try_into()
@@ -28,6 +29,11 @@ pub fn test() -> ()
     println!("Response from python script: {}", from_utf8(output.stdout.as_slice()).expect("Failed to convert byte to string"));
 }
 
+pub fn poot() ->()
+{
+    println!("yikes");
+}
+
 pub fn passArray(list:  & Vec<u64>) -> bool
 {
     let jsonData = json!({
@@ -41,7 +47,10 @@ pub fn passArray(list:  & Vec<u64>) -> bool
     .expect("Failed to execute command");
 
     // print response
-    println!("Response from python script: {}", from_utf8(output.stdout.as_slice()).expect("Failed to convert byte to string"));
+    println!("status: {}", output.status);
+io::stdout().write_all(&output.stdout).unwrap();
+io::stderr().write_all(&output.stderr).unwrap();
+    // println!("Response from python script: {}", from_utf8(output.stdout.as_slice()).expect("Failed to convert byte to string"));
     return false;
 }
 

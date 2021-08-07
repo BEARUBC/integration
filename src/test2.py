@@ -14,6 +14,6 @@ print(modified_data)
 f = open("test2Output.txt", "w")
 f.write("before\n")
 for i in modified_data["array"]:
-	f.write(str(i))
+	f.write((i))
 f.write("after\n")
 f.close()
