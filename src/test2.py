@@ -4,7 +4,7 @@ import sys
 print("hello world")
 
 # receive data from parent via arguments
-data = sys.argv[1]
+data = json.dumps({'array': [1, 2]})
 
 # process data
 modified_data = json.loads(data)
@@ -13,6 +13,7 @@ modified_data = json.loads(data)
 print(modified_data)
 f = open("test2Output.txt", "w")
 f.write("before\n")
-f.write(modified_data["array"])
+for i in modified_data["array"]:
+	f.write(str(i))
 f.write("after\n")
 f.close()
